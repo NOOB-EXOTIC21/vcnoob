@@ -1,4 +1,3 @@
-import os
 import telebot
 import requests
 
@@ -27,4 +26,8 @@ def tell_vehicle_info(message):
     except Exception as e:
         bot.reply_to(message, f"Error: {e}")
 
+
 bot.infinity_polling()
+
+# 6161615496
+# AAFtkF661taD-vRE3nAQ3UF5ggWMD68o2tg
