@@ -2,9 +2,7 @@ import os
 import telebot
 import requests
 
-# Get the bot token from environment variables
-bot_token = os.environ.get('BOT_TOKEN')
-bot = telebot.TeleBot(bot_token)
+bot = telebot.TeleBot("6161615496:AAFtkF661taD-vRE3nAQ3UF5ggWMD68o2tg")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -13,9 +11,13 @@ def send_welcome(message):
 @bot.message_handler(commands=['vc'])
 def tell_vehicle_info(message):
     try:
+        # Extract the vehicleId from the command
         vehicle_id = message.text.split(' ')[1]
+
+        # Make the API request
         response = requests.get(f"https://lol.game-quasar.com//?vehicleId={vehicle_id}")
 
+        # Check if the request was successful (status code 200)
         if response.status_code == 200:
             bot.reply_to(message, f"Response: {response.text}")
         else:
